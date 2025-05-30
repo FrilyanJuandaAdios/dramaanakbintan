@@ -1,3 +1,4 @@
+import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import FilmSection from "@/components/FilmSection";
 import VisionMission from "@/components/VisionMission";

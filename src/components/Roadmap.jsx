@@ -1,48 +1,49 @@
+"use client";
+import { motion } from "framer-motion";
+import { Rocket, Film, Users, Lightbulb } from "lucide-react";
+
+const roadmapData = [
+  {
+    icon: <Rocket size={40} />,
+    title: "Launching Komunitas",
+    description: "Membentuk komunitas kreatif di Bintan untuk eksplorasi lokasi sinematik.",
+  },
+  {
+    icon: <Film size={40} />,
+    title: "Produksi Film Berkala",
+    description: "Rilis film pendek setiap 2 bulan tentang keindahan lokal.",
+  },
+  {
+    icon: <Users size={40} />,
+    title: "Kolaborasi & Pelatihan",
+    description: "Workshop sinematografi dan editing untuk anggota komunitas.",
+  },
+  {
+    icon: <Lightbulb size={40} />,
+    title: "Ekspansi & Inovasi",
+    description: "Menggandeng lebih banyak lokasi dan teknologi seperti drone, 360°, dll.",
+  },
+];
+
 export default function Roadmap() {
-  const roadmapItems = [
-    {
-      year: "2023",
-      title: "Awal Berdiri",
-      description:
-        "Drama Anak Bintan terbentuk dan mulai membuat film pendek untuk memperkenalkan lokasi wisata di Bintan.",
-    },
-    {
-      year: "2024",
-      title: "Produksi Mandiri",
-      description:
-        "Mulai produksi film dengan kru internal. Rilis beberapa film dokumenter dan fiksi pendek di YouTube.",
-    },
-    {
-      year: "2025",
-      title: "Penguatan Komunitas",
-      description:
-        "Membuka pendaftaran anggota komunitas film lokal dan memperluas kerja sama dengan seniman Bintan.",
-    },
-    {
-      year: "2026",
-      title: "Festival & Distribusi",
-      description:
-        "Menargetkan partisipasi di festival film lokal & internasional, serta distribusi digital secara lebih luas.",
-    },
-  ];
-
   return (
-    <section className="bg-[#0d0d0d] text-white px-6 md:px-20 py-16">
-      <div className="max-w-4xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
-          📅 Roadmap Kami
-        </h2>
-
-        <ol className="relative border-l border-gray-700">
-          {roadmapItems.map((item, index) => (
-            <li key={index} className="mb-10 ml-4">
-              <div className="absolute w-3 h-3 bg-red-500 rounded-full -left-1.5 border border-white" />
-              <time className="mb-1 text-sm font-medium text-gray-400">{item.year}</time>
-              <h3 className="text-xl font-semibold">{item.title}</h3>
-              <p className="text-gray-300">{item.description}</p>
-            </li>
-          ))}
-        </ol>
+    <section id="roadmap" className="bg-white py-20 px-6 md:px-20">
+      <h2 className="text-4xl font-bold text-center mb-12">Roadmap Kami</h2>
+      <div className="grid md:grid-cols-2 gap-10">
+        {roadmapData.map((item, index) => (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: index * 0.2 }}
+            viewport={{ once: true }}
+            className="bg-gray-100 p-6 rounded-2xl shadow-md hover:shadow-xl transition"
+          >
+            <div className="text-red-600 mb-4">{item.icon}</div>
+            <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
+            <p className="text-gray-700">{item.description}</p>
+          </motion.div>
+        ))}
       </div>
     </section>
   );

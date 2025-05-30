@@ -22,8 +22,8 @@ export default function JoinCommunity() {
             required
           />
           <input
-            type="email"
-            placeholder="Email aktif"
+            type="number"
+            placeholder="Nomor HP / WA"
             className="p-3 rounded border border-gray-300 text-black"
             required
           />

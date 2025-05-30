@@ -33,7 +33,7 @@ const films = [
 
 export default function FilmSection() {
   return (
-    <section className="bg-black text-white px-6 md:px-20 py-12">
+    <section id="film" className="bg-black text-white px-6 md:px-20 py-12">
       <h2 className="text-3xl md:text-4xl font-bold mb-6">🎞️ Film Kami</h2>
       <div className="flex gap-6 overflow-x-auto pb-4">
         {films.map((film, index) => (

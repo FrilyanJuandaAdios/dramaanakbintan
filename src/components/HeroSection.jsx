@@ -1,6 +1,6 @@
 export default function HeroSection() {
   return (
-    <section className="relative w-full h-screen bg-black text-white">
+    <section id="hero" className="relative w-full h-screen bg-black text-white">
       {/* Background Overlay */}
       <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black z-10"></div>
 
