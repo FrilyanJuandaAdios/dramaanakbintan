@@ -34,23 +34,23 @@ const films = [
 export default function FilmSection() {
   return (
     <section id="film" className="bg-black text-white px-6 md:px-20 py-12">
-      <h2 className="text-3xl md:text-4xl font-bold mb-6">🎞️ Film Kami</h2>
-      <div className="flex gap-6 overflow-x-auto pb-4">
+      <h2 className="text-3xl md:text-4xl font-bold mb-10 text-center">🎞️ Film Kami</h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
         {films.map((film, index) => (
           <a
             key={index}
             href={`https://www.youtube.com/watch?v=${film.youtubeId}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="min-w-[250px] flex-shrink-0"
+            className="block w-full"
           >
-            <div className="relative h-40 md:h-60 w-full overflow-hidden rounded-xl shadow-lg hover:scale-105 transition">
+            <div className="relative aspect-video w-full overflow-hidden rounded-xl shadow-lg hover:scale-105 transition-transform duration-300">
               <img
                 src={film.thumbnail}
                 alt={film.title}
                 className="w-full h-full object-cover"
               />
-              <div className="absolute bottom-0 bg-gradient-to-t from-black via-transparent to-transparent px-4 py-2">
+              <div className="absolute bottom-0 w-full bg-gradient-to-t from-black via-transparent to-transparent px-4 py-2">
                 <p className="text-sm md:text-base font-semibold">{film.title}</p>
               </div>
             </div>

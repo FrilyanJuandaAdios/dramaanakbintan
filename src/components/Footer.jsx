@@ -6,7 +6,7 @@ import { FaInstagram, FaTiktok, FaYoutube } from "react-icons/fa";
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-900 text-gray-300 py-8 px-6 md:px-20">
+    <footer className="bg-red-500 text-gray-300 py-8 px-6 md:px-20">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between">
         {/* Logo + Name */}
         <div className="flex items-center space-x-3 mb-6 md:mb-0">
@@ -16,7 +16,6 @@ export default function Footer() {
 
         {/* Navigation */}
         <div className="flex space-x-8 text-sm">
-          <Link href="#hero" className="hover:text-red-500 transition">Home</Link>
           <Link href="#films" className="hover:text-red-500 transition">Film</Link>
           <Link href="#vision" className="hover:text-red-500 transition">Visi Misi</Link>
           <Link href="#roadmap" className="hover:text-red-500 transition">Roadmap</Link>
@@ -55,7 +54,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="mt-8 text-center text-xs text-gray-500">
+      <div className="mt-8 text-center text-xs text-gray-300">
         © {new Date().getFullYear()} Drama Anak Bintan. All rights reserved.
       </div>
     </footer>

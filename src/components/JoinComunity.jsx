@@ -29,7 +29,7 @@ export default function JoinCommunity() {
           />
           <button
             type="submit"
-            className="bg-red-600 hover:bg-red-700 transition py-3 rounded font-semibold"
+            className="bg-red-500 hover:bg-red-600 transition py-3 rounded font-semibold"
           >
             Daftar Sekarang
           </button>

@@ -1,29 +1,37 @@
-import Link from "next/link";
+"use client";
+import { useEffect, useState } from "react";
+import Image from "next/image";
 
 export default function Navbar() {
-  return (
-    <nav className="fixed top-0 left-0 w-full z-50 bg-transparent backdrop-blur-md px-6 py-4">
-      <div className="max-w-7xl mx-auto flex items-center justify-between">
-        {/* Logo */}
-        <img src="/ADABLogo.png" alt="Drama Anak Bintan" className="h-10" />
+  const [scrolled, setScrolled] = useState(false);
 
-        {/* Menu Links */}
-        <div className="hidden md:flex space-x-6">
-          <Link href="#film" className="text-white hover:text-yellow-300 transition">
-            Film
-          </Link>
-          <Link href="#visimisi" className="text-white hover:text-yellow-300 transition">
-            Visi Misi
-          </Link>
-          <Link href="#roadmap" className="text-white hover:text-yellow-300 transition">
-            Roadmap
-          </Link>
-          <Link href="#layanan" className="text-white hover:text-yellow-300 transition">
-            Layanan
-          </Link>
-          <Link href="#join-community" className="text-white hover:text-yellow-300 transition">
-            Komunitas
-          </Link>
+  useEffect(() => {
+    const onScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  return (
+    <nav
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+        scrolled ? "bg-red-500 shadow-md" : "bg-transparent"
+      }`}
+    >
+      <div className="flex items-center justify-between px-6 md:px-20 py-4">
+        {/* Logo */}
+        <div className="flex items-center space-x-2">
+          <Image src="/ADABLogo.png" alt="Logo" width={40} height={40} />
+          <span className="text-white text-lg font-bold">Drama Anak Bintan</span>
+        </div>
+
+        {/* Menu */}
+        <div className="hidden md:flex space-x-6 text-white font-medium">
+          <a href="#film" className="hover:text-gray-300 transition">Film</a>
+          <a href="#vision" className="hover:text-gray-300 transition">Visi</a>
+          <a href="#roadmap" className="hover:text-gray-300 transition">Roadmap</a>
+          <a href="#komunitas" className="hover:text-gray-300 transition">Komunitas</a>
         </div>
       </div>
     </nav>

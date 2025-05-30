@@ -1,9 +1,10 @@
 "use client"
+
 export default function Services() {
   return (
     <section id="layanan" className="bg-[#111] text-white px-6 md:px-20 py-16">
       <div className="max-w-5xl mx-auto text-center">
-        <h2 className="text-3xl md:text-4xl font-bold mb-10">🎬 Layanan Kami</h2>
+        <h2 className="text-3xl md:text-4xl font-bold mb-10"> Layanan Kami</h2>
         <p className="text-gray-300 max-w-3xl mx-auto mb-12">
           Drama Anak Bintan menyediakan jasa video dan fotografi dengan sentuhan sinematik yang profesional untuk berbagai kebutuhan, mulai dari promosi wisata, event, hingga project personal.
         </p>
@@ -27,7 +28,7 @@ export default function Services() {
         </div>
 
         <button
-          className="mt-12 bg-red-600 hover:bg-red-700 px-8 py-3 rounded-full font-semibold shadow-lg transition"
+          className="mt-12 bg-red-500 hover:bg-red-600 px-8 py-3 rounded-full font-semibold shadow-lg transition"
           onClick={() => window.location.href = '#contact'}
         >
           Hubungi Kami
