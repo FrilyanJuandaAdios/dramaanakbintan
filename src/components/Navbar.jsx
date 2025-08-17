@@ -3,10 +3,12 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { Menu, X } from "lucide-react"; // 🔥 pakai icon lucide
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [darkText, setDarkText] = useState(false);
+  const [open, setOpen] = useState(false); // 🔥 state menu mobile
   const pathname = usePathname();
 
   useEffect(() => {
@@ -15,13 +17,12 @@ export default function Navbar() {
     };
     window.addEventListener("scroll", handleScroll);
 
-    // IntersectionObserver untuk deteksi section terang/gelap
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           const theme = entry.target.getAttribute("data-theme");
           if (entry.isIntersecting) {
-            setDarkText(theme === "light"); // kalau light → teks gelap
+            setDarkText(theme === "light");
           }
         });
       },
@@ -67,9 +68,9 @@ export default function Navbar() {
           />
         </Link>
 
-        {/* Menu */}
+        {/* Desktop Menu */}
         <div
-          className={`flex items-center space-x-8 font-medium ${
+          className={`hidden md:flex items-center space-x-8 font-medium ${
             darkText ? "text-gray-900" : "text-white"
           }`}
         >
@@ -92,7 +93,39 @@ export default function Navbar() {
             Join Now
           </Link>
         </div>
+
+        {/* Mobile Toggle */}
+        <button className="md:hidden text-white" onClick={() => setOpen(!open)}>
+          {open ? <X size={28} /> : <Menu size={28} />}
+        </button>
       </div>
+
+      {/* Mobile Menu */}
+      {open && (
+        <div
+          className={`md:hidden flex flex-col items-center space-y-6 py-6 bg-black/90 backdrop-blur-md font-medium ${
+            darkText ? "text-gray-900" : "text-white"
+          }`}
+        >
+          {menus.map((menu) => (
+            <Link
+              key={menu.name}
+              href={menu.path}
+              className="hover:text-red-400 transition"
+              onClick={() => setOpen(false)}
+            >
+              {menu.name}
+            </Link>
+          ))}
+          <Link
+            href="/join"
+            className="px-6 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition"
+            onClick={() => setOpen(false)}
+          >
+            Join Now
+          </Link>
+        </div>
+      )}
     </nav>
   );
 }
