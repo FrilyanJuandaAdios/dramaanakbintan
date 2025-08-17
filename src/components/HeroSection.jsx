@@ -1,57 +1,36 @@
-import { Film } from "lucide-react";
 export default function HeroSection() {
   return (
-    <section className="relative w-full bg-black text-white">
-      {/* MOBILE View */}
-      <div className="block md:hidden">
-        {/* YouTube Video (Setengah Layar) */}
-        <div className="w-full h-[50vh] relative overflow-hidden">
-          <iframe
-            className="absolute inset-0 w-full h-full object-cover"
-            src="https://www.youtube.com/embed/LsVoMYog1r8?autoplay=1&mute=1&controls=0&loop=1&playlist=LsVoMYog1r8"
-            title="Trailer"
-            frameBorder="0"
-            allow="autoplay; fullscreen"
-            allowFullScreen
-          ></iframe>
-        </div>
+    <section
+      data-theme="dark"
+      className="relative h-screen w-full overflow-hidden"
+    >
+      {/* Background Video */}
+      <iframe
+        src="https://www.youtube.com/embed/LsVoMYog1r8?autoplay=1&mute=1&controls=0&loop=1&playlist=LsVoMYog1r8"
+        className="absolute top-0 left-0 w-full h-full pointer-events-none"
+        allow="autoplay; fullscreen"
+      ></iframe>
 
-        {/* Text Content */}
-        <div className="px-6 pt-6 pb-12 text-center">
-          <h1 className="text-3xl font-extrabold mb-3">Drama Anak Bintan</h1>
-          <p className="text-base mb-4">
-            Film-film pendek yang memperkenalkan keindahan Bintan dengan gaya sinematik.
-          </p>
-       <button className="bg-red-500 hover:bg-red-600 text-white px-5 py-2 rounded-md font-semibold flex items-center">
-      Tonton Sekarang
-      <Film size={20} className="ml-2" />
-    </button>
-        </div>
-      </div>
+      {/* Overlay */}
+      <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50"></div>
 
-      {/* DESKTOP View */}
-      <div className="hidden md:block relative w-full h-screen">
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black z-10"></div>
-        <div className="absolute inset-0 overflow-hidden z-0">
-          <iframe
-            className="w-full h-full object-cover"
-            src="https://www.youtube.com/embed/LsVoMYog1r8?autoplay=1&mute=1&controls=0&loop=1&playlist=LsVoMYog1r8"
-            title="Trailer"
-            frameBorder="0"
-            allow="autoplay; fullscreen"
-            allowFullScreen
-          ></iframe>
-        </div>
-        <div className="relative z-20 flex flex-col items-start justify-end h-full px-6 pb-20 md:px-20">
-          <h1 className="text-6xl font-extrabold mb-4">Drama Anak Bintan</h1>
-          <p className="text-2xl max-w-xl mb-6">
-            Film-film pendek yang memperkenalkan keindahan Bintan dengan gaya sinematik.
-          </p>
-          <button className="bg-red-500 hover:bg-red-600 text-white px-5 py-2 rounded-md font-semibold flex items-center">
-      Tonton Sekarang
-      <Film size={20} className="ml-2" />
-    </button>
-        </div>
+      {/* Content */}
+      <div className="relative z-10 flex flex-col items-start justify-center h-full px-6 md:px-20">
+        {/* Semi-transparent + blur text */}
+        <h1 className="text-5xl md:text-8xl font-extrabold blur-text">
+          Drama Anak Bintan
+        </h1>
+
+        <p className="mt-6 max-w-xl text-lg md:text-xl text-gray-200">
+          Komunitas film yang mengangkat cerita lokal penuh makna dan inspirasi.
+        </p>
+
+        <a
+          href="/about"
+          className="mt-6 px-6 py-3 bg-red-500 rounded-lg shadow-lg hover:bg-red-600 transition text-lg text-white"
+        >
+          Learn More
+        </a>
       </div>
     </section>
   );

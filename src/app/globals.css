@@ -1,7 +1,45 @@
+@import "swiper/css";
+@import "swiper/css/navigation";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 html {
   scroll-behavior: smooth;
+}
+
+/* Glassmorphism Utility */
+.glass {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.glass-text {
+  color: transparent;
+  background: rgba(255, 255, 255, 0.3);
+  -webkit-background-clip: text;
+  background-clip: text;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.blur-text {
+  color: rgba(255, 255, 255, 0.6); /* semi transparan putih */
+  backdrop-filter: blur(10px); /* efek blur di belakang huruf */
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.main-container {
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+}
+
+.section {
+  scroll-snap-align: start;
+  height: 100vh;
 }
