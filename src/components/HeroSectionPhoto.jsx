@@ -10,45 +10,40 @@ export default function HeroSequence() {
     offset: ["start start", "end end"],
   });
 
-  // Hero Title
-  const titleOpacity = useTransform(scrollYProgress, [0, 0.15], [1, 0]);
-  const titleY = useTransform(scrollYProgress, [0, 0.15], [0, -150]);
+  // Title
+  const titleOpacity = useTransform(scrollYProgress, [0, 0.25], [1, 0]);
+  const titleY = useTransform(scrollYProgress, [0, 0.25], [0, -100]);
 
-  // Short About
-  const aboutOpacity = useTransform(
-    scrollYProgress,
-    [0.2, 0.35, 0.45, 0.55],
-    [0, 1, 1, 0]
-  );
-  const lineWidth = useTransform(scrollYProgress, [0.25, 0.35], ["0%", "100%"]);
+  // About
+  const aboutOpacity = useTransform(scrollYProgress, [0.25, 0.5], [0, 1]);
+  const aboutY = useTransform(scrollYProgress, [0.25, 0.5], [50, 0]);
+  const aboutOut = useTransform(scrollYProgress, [0.5, 0.6], [1, 0]);
 
   // Photo
-  const photoOpacity = useTransform(scrollYProgress, [0.55, 0.75], [0, 1]);
-  const photoScale = useTransform(scrollYProgress, [0.55, 0.75], [1.1, 1]);
+  const photoOpacity = useTransform(scrollYProgress, [0.55, 0.8], [0, 1]);
+  const photoScale = useTransform(scrollYProgress, [0.55, 0.8], [1.1, 1]);
 
   return (
-    <section ref={ref} className="h-[500vh] bg-black text-white relative">
-      <div className="sticky top-0 h-screen flex flex-col items-center justify-center overflow-hidden">
+    <section ref={ref} className="h-[400vh] bg-black text-white relative">
+      <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden">
         {/* Background Glow */}
-        <div className="absolute inset-0">
-          {/* Glow Merah */}
+        <div className="absolute inset-0 -z-10">
           <motion.div
             animate={{ scale: [1, 1.2, 1] }}
             transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute -top-40 -left-40 w-[500px] h-[500px] bg-red-500/30 rounded-full blur-3xl"
+            className="absolute -top-40 -left-40 w-[400px] h-[400px] bg-red-500/30 rounded-full blur-3xl"
           />
-          {/* Glow Biru / Ungu */}
           <motion.div
-            animate={{ y: [0, -30, 0], x: [0, 20, 0], scale: [1, 1.05, 1] }}
-            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-purple-500/20 rounded-full blur-[150px]"
+            animate={{ y: [0, -20, 0], x: [0, 15, 0], scale: [1, 1.05, 1] }}
+            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-purple-500/20 rounded-full blur-[120px]"
           />
         </div>
 
         {/* Title */}
         <motion.h1
           style={{ opacity: titleOpacity, y: titleY }}
-          className="text-6xl md:text-8xl font-extrabold text-center relative z-10 tracking-tight"
+          className="text-6xl md:text-8xl font-extrabold text-center z-10"
         >
           Drama Anak Bintan
         </motion.h1>
@@ -64,19 +59,16 @@ export default function HeroSequence() {
 
         {/* Short About */}
         <motion.div
-          style={{ opacity: aboutOpacity }}
+          style={{ opacity: aboutOpacity, y: aboutY, scale: aboutOut }}
           className="absolute text-center max-w-xl px-6 z-10"
         >
           <p className="text-lg md:text-2xl text-gray-200">
             Komunitas kreatif yang menghubungkan tradisi dengan film modern.
           </p>
-          <motion.div
-            style={{ width: lineWidth }}
-            className="h-1 bg-red-500 mt-4 mx-auto rounded-full"
-          />
+          <div className="h-1 bg-red-500 mt-4 mx-auto rounded-full w-3/4" />
         </motion.div>
 
-        {/* Fullscreen Photo */}
+        {/* Fullscreen Photo (Grayscale) */}
         <motion.div
           style={{ opacity: photoOpacity, scale: photoScale }}
           className="absolute inset-0"
@@ -85,28 +77,15 @@ export default function HeroSequence() {
             src="/FrontCover.png"
             alt="Team"
             fill
-            className="object-cover"
+            className="object-cover grayscale"
           />
           <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
-            <motion.p
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1 }}
-              className="text-3xl md:text-5xl font-semibold text-center px-6"
-            >
+            <p className="text-3xl md:text-5xl font-semibold text-center px-6">
               Kami merangkul anak-anak muda untuk berkreasi
-            </motion.p>
+            </p>
           </div>
         </motion.div>
       </div>
-
-      {/* Outline Text Style */}
-      <style jsx>{`
-        .stroke-text {
-          -webkit-text-stroke: 1.5px white;
-          color: transparent;
-        }
-      `}</style>
     </section>
   );
 }

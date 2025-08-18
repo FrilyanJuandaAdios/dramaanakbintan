@@ -71,7 +71,7 @@ export default function Member() {
       />
 
       <div className="relative max-w-6xl mx-auto">
-        <h2 className="text-4xl font-bold mb-12 text-center">
+        <h2 className="text-4xl text-white font-bold mb-12 text-center">
           Behind the Scene
         </h2>
 
@@ -101,10 +101,10 @@ export default function Member() {
                   />
                 </div>
                 {/* Nama + Posisi */}
-                <h4 className="font-semibold mt-4">{person.name}</h4>
+                <h4 className="font-semibold text-white mt-4">{person.name}</h4>
                 <p className="text-gray-400 text-sm mb-4">{person.role}</p>
                 {/* Button */}
-                <button className="px-4 py-2 text-sm font-semibold bg-red-600 hover:bg-red-500 rounded-full transition">
+                <button className="px-4 py-2 text-sm text-white font-semibold bg-red-600 hover:bg-red-500 rounded-full transition">
                   Learn More
                 </button>
               </div>
@@ -138,10 +138,10 @@ export default function Member() {
                   />
                 </div>
                 {/* Nama + Posisi */}
-                <h4 className="font-semibold mt-4">{person.name}</h4>
+                <h4 className="font-semibold text-white mt-4">{person.name}</h4>
                 <p className="text-gray-400 text-sm mb-4">{person.role}</p>
                 {/* Button */}
-                <button className="px-4 py-2 text-sm font-semibold bg-red-600 hover:bg-red-500 rounded-full transition">
+                <button className="px-4 py-2 text-sm text-white font-semibold bg-red-600 hover:bg-red-500 rounded-full transition">
                   Learn More
                 </button>
               </div>

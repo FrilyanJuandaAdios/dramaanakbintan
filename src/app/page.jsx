@@ -10,7 +10,6 @@ import HighlightCarousel from "@/components/HighlightCarousel";
 import FilmDetailModal from "@/components/FilmDetailModal";
 import { useState } from "react";
 import HeroSectionPhoto from "@/components/HeroSectionPhoto";
-import BehindTheScene from "@/components/BehindTheScene";
 import ComingSoonAndLatest from "@/components/ComingSoonAndLatest";
 import BintanSection from "@/components/BintanSection";
 

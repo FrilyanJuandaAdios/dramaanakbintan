@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Footer from "@/components/Footer";
 import { useState } from "react";
 import Member from "@/components/Member";
+import AboutHero from "@/components/AboutHero";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -19,29 +20,8 @@ const songketPattern = {
 export default function AboutPage() {
   const [showModal, setShowModal] = useState(false);
   return (
-    <main className="bg-black text-white overflow-hidden">
-      {/* Hero */}
-      <section className="relative h-screen flex items-center justify-center text-center">
-        <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
-        {/* Songket Pattern */}
-        <div
-          className="absolute inset-0 opacity-10 mix-blend-overlay"
-          style={songketPattern}
-        />
-        <motion.h1
-          variants={fadeUp}
-          initial="hidden"
-          animate="show"
-          className="relative z-10 text-4xl md:text-6xl font-bold max-w-4xl"
-        >
-          Connecting Filmmakers with Viewers through{" "}
-          <span className="text-red-500">Creativity</span> and{" "}
-          <span className="text-red-500">Tradition</span>
-        </motion.h1>
-        {/* Accent Red Glow */}
-        <div className="absolute -top-20 -left-20 w-96 h-96 bg-red-500/30 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-red-600/20 rounded-full blur-3xl animate-pulse-slow" />
-      </section>
+    <main className="min-h-screen bg-black">
+      <AboutHero />
 
       {/* Our Story */}
       <section className="relative py-24 px-6 md:px-12 bg-black text-white">
@@ -106,7 +86,7 @@ export default function AboutPage() {
               &times;
             </button>
 
-            <h3 className="text-3xl font-bold mb-6">
+            <h3 className="text-3xl font-bold mb-6 text-white">
               Our <span className="text-red-500">Story</span>
             </h3>
 
@@ -171,7 +151,7 @@ export default function AboutPage() {
             whileInView="show"
             className="p-8 rounded-2xl bg-white/5 backdrop-blur-lg"
           >
-            <h3 className="text-3xl font-bold mb-4">Visi</h3>
+            <h3 className="text-3xl font-bold text-white mb-4">Visi</h3>
             <p className="text-gray-300">
               Menjadi pusat kreativitas film di Bintan yang mendunia.
             </p>
@@ -191,7 +171,9 @@ export default function AboutPage() {
                 key={i}
                 className="p-8 rounded-2xl bg-white/5 backdrop-blur-lg"
               >
-                <h4 className="text-xl font-semibold mb-2">Misi {i + 1}</h4>
+                <h4 className="text-xl font-semibold text-white mb-2">
+                  Misi {i + 1}
+                </h4>
                 <p className="text-gray-300">{misi}</p>
               </div>
             ))}
@@ -207,8 +189,10 @@ export default function AboutPage() {
           style={songketPattern}
         />
         <div className="relative max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold mb-16 text-center">Roadmap</h2>
-          <div className="flex items-center justify-between relative">
+          <h2 className="text-4xl font-bold text-white mb-16 text-center">
+            Roadmap
+          </h2>
+          <div className="flex items-center text-white justify-between relative">
             <div className="absolute top-6 left-0 right-0 h-[2px] bg-red-500" />
             {[
               {
@@ -243,14 +227,16 @@ export default function AboutPage() {
           whileInView="show"
           className="relative max-w-3xl mx-auto space-y-10"
         >
-          <h2 className="text-4xl md:text-5xl font-bold">Join With Us</h2>
+          <h2 className="text-4xl md:text-5xl text-white font-bold">
+            Join With Us
+          </h2>
           <p className="text-gray-300">
             Bergabunglah dengan komunitas kami dan wujudkan karya bersama untuk
             menginspirasi dunia.
           </p>
           <a
             href="/komunitas"
-            className="inline-block px-10 py-4 bg-red-600 rounded-full font-semibold hover:bg-red-500 transition"
+            className="inline-block px-10 py-4 text-white bg-red-600 rounded-full font-semibold hover:bg-red-500 transition"
           >
             Gabung Komunitas
           </a>
