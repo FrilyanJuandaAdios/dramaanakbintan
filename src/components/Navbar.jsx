@@ -42,8 +42,8 @@ export default function Navbar() {
   const menus = [
     { name: "Home", path: "/" },
     { name: "About Us", path: "/about" },
-    { name: "Projects", path: "/projects" },
-    { name: "Programs", path: "/programs" },
+    { name: "Projects", path: "/projectpage" },
+    { name: "Programs", path: "/programpage" },
     { name: "Contact Us", path: "/contact" },
     { name: "Komunitas", path: "/komunitas" },
   ];
