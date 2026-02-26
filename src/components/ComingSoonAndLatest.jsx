@@ -8,9 +8,9 @@ const postersComing = [
 ];
 
 const postersLatest = [
-  { id: 1, src: "/Poster/1.jpeg", title: "Film Terbaru 1" },
-  { id: 2, src: "/Poster/2.jpeg", title: "Film Terbaru 2" },
-  { id: 3, src: "/Poster/3.jpeg", title: "Film Terbaru 3" },
+  { id: 1, src: "/Poster/5.png", title: "Ketika Kita Tidak lagi Sendiri" },
+  { id: 2, src: "/Poster/6.png", title: "Suara Ayah" },
+  { id: 3, src: "/Poster/7.png", title: "Saudade" },
 ];
 
 export default function ComingSoonAndLatest() {

@@ -1,74 +1,70 @@
 "use client";
+
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
+// ============================
+// MAIN SWITCHER (lebih clean)
+// ============================
 export default function HeroSequence() {
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const media = window.matchMedia("(min-width: 768px)");
+    setIsDesktop(media.matches);
+
+    const listener = (e) => setIsDesktop(e.matches);
+    media.addEventListener("change", listener);
+
+    return () => media.removeEventListener("change", listener);
+  }, []);
+
+  return isDesktop ? <HeroSequenceDesktop /> : <HeroSequenceMobile />;
+}
+
+// ============================
+// DESKTOP VERSION (SCROLL SEQUENCE)
+// ============================
+function HeroSequenceDesktop() {
   const ref = useRef(null);
+
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end end"],
   });
 
-  // Title
   const titleOpacity = useTransform(scrollYProgress, [0, 0.25], [1, 0]);
   const titleY = useTransform(scrollYProgress, [0, 0.25], [0, -100]);
 
-  // About
   const aboutOpacity = useTransform(scrollYProgress, [0.25, 0.5], [0, 1]);
   const aboutY = useTransform(scrollYProgress, [0.25, 0.5], [50, 0]);
-  const aboutOut = useTransform(scrollYProgress, [0.5, 0.6], [1, 0]);
 
-  // Photo
   const photoOpacity = useTransform(scrollYProgress, [0.55, 0.8], [0, 1]);
-  const photoScale = useTransform(scrollYProgress, [0.55, 0.8], [1.1, 1]);
+  const photoScale = useTransform(scrollYProgress, [0.55, 0.8], [1.05, 1]);
 
   return (
-    <section ref={ref} className="h-[400vh] bg-black text-white relative">
+    <section ref={ref} className="h-[300vh] bg-black text-white relative">
       <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden">
-        {/* Background Glow */}
-        <div className="absolute inset-0 -z-10">
-          <motion.div
-            animate={{ scale: [1, 1.2, 1] }}
-            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute -top-40 -left-40 w-[400px] h-[400px] bg-red-500/30 rounded-full blur-3xl"
-          />
-          <motion.div
-            animate={{ y: [0, -20, 0], x: [0, 15, 0], scale: [1, 1.05, 1] }}
-            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-purple-500/20 rounded-full blur-[120px]"
-          />
-        </div>
-
         {/* Title */}
         <motion.h1
           style={{ opacity: titleOpacity, y: titleY }}
-          className="text-6xl md:text-8xl font-extrabold text-center z-10"
+          className="text-6xl md:text-8xl font-extrabold text-center"
         >
           Drama Anak Bintan
         </motion.h1>
 
-        {/* Arrow Indicator */}
+        {/* About */}
         <motion.div
-          animate={{ y: [0, 12, 0] }}
-          transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-          className="absolute bottom-10 text-3xl z-10 opacity-80"
-        >
-          ↓
-        </motion.div>
-
-        {/* Short About */}
-        <motion.div
-          style={{ opacity: aboutOpacity, y: aboutY, scale: aboutOut }}
-          className="absolute text-center max-w-xl px-6 z-10"
+          style={{ opacity: aboutOpacity, y: aboutY }}
+          className="absolute text-center max-w-xl px-6"
         >
           <p className="text-lg md:text-2xl text-gray-200">
             Komunitas kreatif yang menghubungkan tradisi dengan film modern.
           </p>
-          <div className="h-1 bg-red-500 mt-4 mx-auto rounded-full w-3/4" />
         </motion.div>
 
-        {/* Fullscreen Photo (Grayscale) */}
+        {/* Photo */}
         <motion.div
           style={{ opacity: photoOpacity, scale: photoScale }}
           className="absolute inset-0"
@@ -77,6 +73,7 @@ export default function HeroSequence() {
             src="/FrontCover.png"
             alt="Team"
             fill
+            priority
             className="object-cover grayscale"
           />
           <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
@@ -85,6 +82,35 @@ export default function HeroSequence() {
             </p>
           </div>
         </motion.div>
+      </div>
+    </section>
+  );
+}
+
+// ============================
+// MOBILE VERSION (SUPER OPTIMIZED)
+// ============================
+function HeroSequenceMobile() {
+  return (
+    <section className="min-h-screen bg-black text-white flex flex-col justify-center items-center px-6 text-center">
+      <h1 className="text-4xl font-extrabold mb-6">Drama Anak Bintan</h1>
+
+      <p className="text-base text-gray-300 mb-8 max-w-md">
+        Komunitas kreatif yang menghubungkan tradisi dengan film modern.
+      </p>
+
+      <div className="relative w-full max-w-sm aspect-[4/5] rounded-2xl overflow-hidden">
+        <Image
+          src="/FrontCover.png"
+          alt="Team"
+          fill
+          className="object-cover grayscale"
+        />
+        <div className="absolute inset-0 bg-black/40 flex items-center justify-center px-4">
+          <p className="text-lg font-semibold">
+            Kami merangkul anak-anak muda untuk berkreasi
+          </p>
+        </div>
       </div>
     </section>
   );

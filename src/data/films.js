@@ -29,6 +29,46 @@ const films = [
     rating: "8.7",
     youtubeUrl: "https://www.youtube.com/watch?v=z6WdME5yjyY",
   },
+  {
+    title: "Sssstt...",
+    premis:
+      "Aris, seorang pemuda yang sedang lembur di kamar remang-remangnya, mendengarkan radio tua sambil bekerja. Malam yang tenang berubah mencekam ketika keanehan mulai terjadi, laptopnya yang tiba-tiba lenyap tanpa jejak. Dalam kebingungan, Aris menemukan laptopnya kembali, bersinar misterius di dalam lemari. Namun, saat ia mendekat, ia dikejutkan oleh kehadiran seorang perempuan misterius yang berbisik pelan, “Sssstt…” Membuat Aris terperangkap dalam teror dan misteri yang tak terjawab.",
+    poster: "/thumbnails/4.png",
+    background: "/thumbnails/4.png",
+    videoId: "6sbGrUXYSFA",
+    rating: "8.7",
+    youtubeUrl: "https://www.youtube.com/watch?v=6sbGrUXYSFA",
+  },
+  {
+    title: "Bapak Aku Pelaut",
+    premis:
+      "Bapak Aku Pelaut : Pulang bawa uang warna - warni dari seluruh Dunia!!! Participant of BI Digital Content Competition 2024",
+    poster: "/thumbnails/5.png",
+    background: "/thumbnails/5.png",
+    videoId: "EjzFkVyJ91Q",
+    rating: "8.8",
+    youtubeUrl: "https://www.youtube.com/watch?v=EjzFkVyJ91Q",
+  },
+  {
+    title: "Konde Mak Cik",
+    premis:
+      "Di sebuah rumah tua yang sunyi, seorang Mak Cik tua sedang dengan telaten membuat konde dari rambut. Namun, suasana tenang berubah mencekam saat seorang anak perempuan berambut panjang melintas dan mampir ke rumah Mak Cik. Apa yang dimulai dengan ajakan ramah, berakhir dengan kejadian mengerikan di dalam rumah yang sepi. Anak itu terjebak dalam kegelapan, sementara Mak Cik menunjukkan sisi gelapnya. Dengan gunting besar yang menghantui, konde bukan lagi sekadar hiasan rambut, melainkan sebuah akhir yang mengerikan.",
+    poster: "/thumbnails/6.jpg",
+    background: "/thumbnails/6.jpg",
+    videoId: "MQ4SAhfDCNA",
+    rating: "8.8",
+    youtubeUrl: "https://www.youtube.com/watch?v=MQ4SAhfDCNA",
+  },
+  {
+    title: "Ketika Kita Tidak lagi Sendiri",
+    premis:
+      "Di tengah duka kehilangan seorang ibu, tiga bersaudara harus menghadapi kepulangan ayah yang telah sepuluh tahun meninggalkan mereka. Luka lama kembali terbuka, amarah yang terpendam akhirnya bersuara.Irham, sang anak sulung, yang selama ini menjadi tulang punggung keluarga, dipaksa memilih: terus menyimpan dendam atau belajar memaafkan. Sebuah film tentang keluarga, kehilangan, dan keberanian untuk pulang.Karena pada akhirnya, kita tidak pernah benar-benar sendiri.",
+    poster: "/thumbnails/7.jpg",
+    background: "/thumbnails/7.jpg",
+    videoId: "-q_wSLbXhIE",
+    rating: "8.8",
+    youtubeUrl: "https://www.youtube.com/watch?v=-q_wSLbXhIE",
+  },
 ];
 
 export default films;

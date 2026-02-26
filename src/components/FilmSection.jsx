@@ -29,12 +29,19 @@ const films = [
     thumbnail: "/thumbnails/6.JPG",
     youtubeId: "EjzFkVyJ91Q",
   },
+  {
+    title: "Ketika Kita Tidak lagi Sendiri",
+    thumbnail: "/thumbnails/7.JPG",
+    youtubeId: "-q_wSLbXhIE",
+  },
 ];
 
 export default function FilmSection() {
   return (
     <section id="film" className="bg-black text-white px-6 md:px-20 py-12">
-      <h2 className="text-3xl md:text-4xl font-bold mb-10 text-center">🎞️ Film Kami</h2>
+      <h2 className="text-3xl md:text-4xl font-bold mb-10 text-center">
+        🎞️ Film Kami
+      </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
         {films.map((film, index) => (
           <a
@@ -51,7 +58,9 @@ export default function FilmSection() {
                 className="w-full h-full object-cover"
               />
               <div className="absolute bottom-0 w-full bg-gradient-to-t from-black via-transparent to-transparent px-4 py-2">
-                <p className="text-sm md:text-base font-semibold">{film.title}</p>
+                <p className="text-sm md:text-base font-semibold">
+                  {film.title}
+                </p>
               </div>
             </div>
           </a>
