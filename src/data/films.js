@@ -53,8 +53,8 @@ const films = [
     title: "Konde Mak Cik",
     premis:
       "Di sebuah rumah tua yang sunyi, seorang Mak Cik tua sedang dengan telaten membuat konde dari rambut. Namun, suasana tenang berubah mencekam saat seorang anak perempuan berambut panjang melintas dan mampir ke rumah Mak Cik. Apa yang dimulai dengan ajakan ramah, berakhir dengan kejadian mengerikan di dalam rumah yang sepi. Anak itu terjebak dalam kegelapan, sementara Mak Cik menunjukkan sisi gelapnya. Dengan gunting besar yang menghantui, konde bukan lagi sekadar hiasan rambut, melainkan sebuah akhir yang mengerikan.",
-    poster: "/thumbnails/6.jpg",
-    background: "/thumbnails/6.jpg",
+    poster: "/thumbnails/6.JPG",
+    background: "/thumbnails/6.JPG",
     videoId: "MQ4SAhfDCNA",
     rating: "8.8",
     youtubeUrl: "https://www.youtube.com/watch?v=MQ4SAhfDCNA",
@@ -63,8 +63,8 @@ const films = [
     title: "Ketika Kita Tidak lagi Sendiri",
     premis:
       "Di tengah duka kehilangan seorang ibu, tiga bersaudara harus menghadapi kepulangan ayah yang telah sepuluh tahun meninggalkan mereka. Luka lama kembali terbuka, amarah yang terpendam akhirnya bersuara.Irham, sang anak sulung, yang selama ini menjadi tulang punggung keluarga, dipaksa memilih: terus menyimpan dendam atau belajar memaafkan. Sebuah film tentang keluarga, kehilangan, dan keberanian untuk pulang.Karena pada akhirnya, kita tidak pernah benar-benar sendiri.",
-    poster: "/thumbnails/7.jpg",
-    background: "/thumbnails/7.jpg",
+    poster: "/thumbnails/7.JPG",
+    background: "/thumbnails/7.JPG",
     videoId: "-q_wSLbXhIE",
     rating: "8.8",
     youtubeUrl: "https://www.youtube.com/watch?v=-q_wSLbXhIE",

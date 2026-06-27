@@ -96,6 +96,11 @@ export default function HighlightCarousel({ onDetailClick }) {
                   src={film.poster}
                   alt={film.title}
                   className="w-full h-full object-cover"
+                  loading="lazy"
+                  onError={(e) => {
+                    e.currentTarget.src = "/FrontCover.png";
+                    e.currentTarget.onerror = null;
+                  }}
                 />
               </div>
             </SwiperSlide>
