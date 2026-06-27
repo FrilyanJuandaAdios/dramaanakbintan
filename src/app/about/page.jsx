@@ -11,11 +11,6 @@ const fadeUp = {
   show: { opacity: 1, y: 0, transition: { duration: 0.8 } },
 };
 
-// Ornamen Songket (SVG Pattern)
-const songketPattern = {
-  backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 100 100'%3E%3Cpath d='M50 0 L60 20 L80 20 L65 35 L70 55 L50 45 L30 55 L35 35 L20 20 L40 20 Z' fill='%23ff0000'/%3E%3C/svg%3E")`,
-  backgroundSize: "120px 120px",
-};
 
 export default function AboutPage() {
   const [showModal, setShowModal] = useState(false);
@@ -142,74 +137,130 @@ export default function AboutPage() {
       )}
 
       {/* Visi & Misi */}
-      <section className="relative py-20 px-6 md:px-12 bg-black">
-        <div className="absolute inset-0 bg-black/30 backdrop-blur-md" />
-        <div className="relative max-w-6xl mx-auto space-y-12 text-center">
+      <section className="py-24 px-6 md:px-12 bg-black">
+        <div className="max-w-5xl mx-auto">
+          <motion.h2
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="show"
+            className="text-4xl md:text-5xl font-bold text-white text-center mb-16"
+          >
+            Visi & <span className="text-red-500">Misi</span>
+          </motion.h2>
+
+          {/* Visi Card */}
           <motion.div
             variants={fadeUp}
             initial="hidden"
             whileInView="show"
-            className="p-8 rounded-2xl bg-white/5 backdrop-blur-lg"
+            className="mb-6 rounded-2xl bg-white/5 backdrop-blur-lg border border-white/10 p-8 md:p-10"
           >
-            <h3 className="text-3xl font-bold text-white mb-4">Visi</h3>
-            <p className="text-gray-300">
-              Menjadi pusat kreativitas film di Bintan yang mendunia.
+            <p className="text-xs uppercase tracking-widest text-red-500 mb-4 font-semibold">Visi</p>
+            <p className="text-white text-lg md:text-xl leading-relaxed border-l-2 border-red-500 pl-6">
+              Menjadi rumah produksi kreatif yang mendorong pertumbuhan perfilman Indonesia melalui karya berkualitas, pengembangan talenta, dan ekosistem kreatif yang inklusif serta berdaya saing di tingkat nasional maupun internasional.
             </p>
           </motion.div>
+
+          {/* Misi Card */}
           <motion.div
             variants={fadeUp}
             initial="hidden"
             whileInView="show"
-            className="grid md:grid-cols-3 gap-8"
+            className="rounded-2xl bg-white/5 backdrop-blur-lg border border-white/10 p-8 md:p-10"
           >
-            {[
-              "Mengembangkan talenta lokal",
-              "Mempromosikan budaya Bintan",
-              "Menghasilkan karya berkualitas",
-            ].map((misi, i) => (
-              <div
-                key={i}
-                className="p-8 rounded-2xl bg-white/5 backdrop-blur-lg"
-              >
-                <h4 className="text-xl font-semibold text-white mb-2">
-                  Misi {i + 1}
-                </h4>
-                <p className="text-gray-300">{misi}</p>
-              </div>
-            ))}
+            <p className="text-xs uppercase tracking-widest text-red-500 mb-8 font-semibold">Misi</p>
+            <ol className="space-y-5">
+              {[
+                "Menghasilkan karya film dan audiovisual yang kuat secara cerita, visual, dan emosional dengan standar produksi profesional.",
+                "Membangun wadah bagi talenta kreatif untuk berkembang, berkolaborasi, dan menemukan ruang dalam industri perfilman.",
+                "Mengembangkan potensi sineas muda dan kreator lokal agar mampu bersaing dalam industri kreatif nasional maupun global.",
+                "Menciptakan ekosistem perfilman yang lebih merata dengan membuka peluang berkarya di luar pusat industri yang selama ini terpusat di kota-kota besar.",
+                "Membawa karya-karya autentik Indonesia kepada audiens yang lebih luas melalui berbagai platform, festival, dan jaringan distribusi.",
+                "Membangun kolaborasi strategis dengan berbagai pihak untuk memperkuat industri kreatif dan perfilman Indonesia.",
+              ].map((item, i) => (
+                <li key={i} className="flex gap-5 items-start">
+                  <span className="text-red-500 text-xs font-mono mt-[3px] shrink-0 font-bold">
+                    0{i + 1}
+                  </span>
+                  <p className="text-gray-300 leading-relaxed">{item}</p>
+                </li>
+              ))}
+            </ol>
           </motion.div>
         </div>
       </section>
 
       {/* Roadmap */}
-      <section className="relative py-20 px-6 md:px-12">
-        <div className="absolute inset-0 bg-black/40 backdrop-blur-md" />
-        <div
-          className="absolute inset-0 opacity-5 mix-blend-overlay"
-          style={songketPattern}
-        />
-        <div className="relative max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-white mb-16 text-center">
-            Roadmap
-          </h2>
-          <div className="flex items-center text-white justify-between relative">
-            <div className="absolute top-6 left-0 right-0 h-[2px] bg-red-500" />
+      <section className="py-24 px-6 md:px-12 bg-black border-t border-white/5">
+        <div className="max-w-5xl mx-auto">
+          <motion.h2
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="show"
+            className="text-4xl md:text-5xl font-bold text-white text-center mb-16"
+          >
+            Road<span className="text-red-500">map</span>
+          </motion.h2>
+
+          <div className="grid md:grid-cols-3 gap-4">
             {[
               {
-                year: "2020",
-                desc: "Berdiri di Bintan sebagai komunitas film",
+                year: "2026",
+                subtitle: "Membangun Fondasi",
+                note: "Memperkuat identitas dan sistem produksi",
+                items: [
+                  "Menghasilkan 3–5 karya audiovisual",
+                  "Membangun tim inti kreatif",
+                  "Membentuk 10+ portofolio karya",
+                  "Mengikuti 2+ festival/kompetisi film",
+                  "Membangun jaringan dengan 10+ kreator lewat Patah Pulih",
+                ],
               },
-              { year: "2021", desc: "Produksi film pendek pertama" },
               {
-                year: "2023",
-                desc: "Berpartisipasi di festival internasional",
+                year: "2027",
+                subtitle: "Pengembangan & Perluasan",
+                note: "Meningkatkan kualitas dan memperluas jaringan",
+                items: [
+                  "Menghasilkan 5–10 karya profesional",
+                  "Menjalin kerja sama dengan 10+ mitra/brand/institusi",
+                  "Membuka program pengembangan talenta",
+                  "Membina 50+ talenta kreatif",
+                  "Memperluas kolaborasi ke berbagai kota di Indonesia",
+                ],
               },
-            ].map((milestone, i) => (
-              <div key={i} className="relative text-center w-1/3">
-                <div className="w-6 h-6 bg-red-500 rounded-full mx-auto mb-4" />
-                <h4 className="font-bold">{milestone.year}</h4>
-                <p className="text-gray-400 text-sm">{milestone.desc}</p>
-              </div>
+              {
+                year: "2028",
+                subtitle: "Ekspansi & Pengakuan Industri",
+                note: "Membawa karya menuju tingkat nasional dan internasional",
+                items: [
+                  "Mengembangkan proyek film skala lebih besar",
+                  "Membawa karya ke festival nasional & internasional",
+                  "Menjangkau 10+ kota melalui kolaborasi",
+                  "Membangun ekosistem perfilman yang berkelanjutan",
+                  "Menjadi wadah lahirnya filmmaker baru",
+                ],
+              },
+            ].map((phase, i) => (
+              <motion.div
+                key={i}
+                variants={fadeUp}
+                initial="hidden"
+                whileInView="show"
+                transition={{ delay: i * 0.1 }}
+                className="rounded-2xl bg-white/5 backdrop-blur-lg border border-white/10 p-7 flex flex-col"
+              >
+                <p className="text-red-500 text-xs font-mono font-bold mb-1">{phase.year}</p>
+                <h3 className="text-white font-bold text-base mb-2">{phase.subtitle}</h3>
+                <p className="text-gray-500 text-xs mb-6 leading-relaxed">{phase.note}</p>
+                <ul className="space-y-3 mt-auto">
+                  {phase.items.map((item, j) => (
+                    <li key={j} className="flex gap-3 items-start">
+                      <span className="w-1.5 h-1.5 rounded-full bg-red-500 mt-1.5 shrink-0" />
+                      <span className="text-gray-400 text-sm leading-relaxed">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -235,10 +286,10 @@ export default function AboutPage() {
             menginspirasi dunia.
           </p>
           <a
-            href="/komunitas"
+            href="/contact"
             className="inline-block px-10 py-4 text-white bg-red-600 rounded-full font-semibold hover:bg-red-500 transition"
           >
-            Gabung Komunitas
+            Contact Us
           </a>
         </motion.div>
       </section>

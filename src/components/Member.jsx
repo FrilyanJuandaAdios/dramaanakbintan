@@ -9,12 +9,12 @@ const boardExecutive = [
   },
   {
     name: "Rafly Safriansyah",
-    role: "Founder & Talent Manager",
+    role: "Founder & Field Producer",
     image: "/Member/Member2.jpeg",
   },
   {
     name: "Tahani Vidra Putri",
-    role: "Executive Producer",
+    role: "Executive Producer & Script Writer",
     image: "/Member/Member3.jpeg",
   },
 ];
@@ -102,11 +102,7 @@ export default function Member() {
                 </div>
                 {/* Nama + Posisi */}
                 <h4 className="font-semibold text-white mt-4">{person.name}</h4>
-                <p className="text-gray-400 text-sm mb-4">{person.role}</p>
-                {/* Button */}
-                <button className="px-4 py-2 text-sm text-white font-semibold bg-red-600 hover:bg-red-500 rounded-full transition">
-                  Learn More
-                </button>
+                <p className="text-gray-400 text-sm">{person.role}</p>
               </div>
             ))}
           </div>
@@ -139,11 +135,7 @@ export default function Member() {
                 </div>
                 {/* Nama + Posisi */}
                 <h4 className="font-semibold text-white mt-4">{person.name}</h4>
-                <p className="text-gray-400 text-sm mb-4">{person.role}</p>
-                {/* Button */}
-                <button className="px-4 py-2 text-sm text-white font-semibold bg-red-600 hover:bg-red-500 rounded-full transition">
-                  Learn More
-                </button>
+                <p className="text-gray-400 text-sm">{person.role}</p>
               </div>
             ))}
           </div>

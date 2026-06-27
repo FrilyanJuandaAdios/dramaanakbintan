@@ -1,176 +1,155 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
-import GalleryCard from "./GalleryCard";
+import { useState } from "react";
+import Image from "next/image";
+import { ChevronLeft, ChevronRight, Instagram } from "lucide-react";
 import { reelsData } from "./galleryData";
 
 export default function HeroGallery() {
-  const [activeIndex, setActiveIndex] = useState(
-    Math.min(2, reelsData.length - 1)
-  );
-  const [isAutoPlay, setIsAutoPlay] = useState(true);
+  const [current, setCurrent] = useState(0);
+  const [fading, setFading] = useState(false);
 
-  // Auto-play effect
-  useEffect(() => {
-    if (!isAutoPlay || reelsData.length === 0) return;
-
-    const interval = setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % reelsData.length);
-    }, 3000);
-
-    return () => clearInterval(interval);
-  }, [isAutoPlay, reelsData.length]);
-
-  // Pause auto-play on hover
-  const handleMouseEnter = () => setIsAutoPlay(false);
-  const handleMouseLeave = () => setIsAutoPlay(true);
-
-  // Get position for each card
-  const getPosition = (index) => {
-    const positions = [
-      "center",
-      "right",
-      "far-right",
-      "far-left",
-      "left",
-    ];
-    const offset = (index - activeIndex + reelsData.length) % reelsData.length;
-    return positions[offset];
+  const navigate = (index) => {
+    setFading(true);
+    setTimeout(() => {
+      setCurrent(index);
+      setFading(false);
+    }, 180);
   };
 
-  // Handle card click
-  const handleCardClick = (index) => {
-    const item = reelsData[index];
-    window.open(item.url, "_blank", "noopener,noreferrer");
-  };
+  const prev = () =>
+    navigate((current - 1 + reelsData.length) % reelsData.length);
+  const next = () =>
+    navigate((current + 1) % reelsData.length);
+
+  const item = reelsData[current];
 
   return (
-    <section className="relative w-full py-24 px-6 overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-black" />
-      <motion.div
-        className="absolute inset-0"
-        animate={{
-          background: [
-            "radial-gradient(circle at 50% 50%, rgba(239, 68, 68, 0.1) 0%, transparent 50%)",
-            "radial-gradient(circle at 50% 50%, rgba(239, 68, 68, 0.15) 0%, transparent 50%)",
-            "radial-gradient(circle at 50% 50%, rgba(239, 68, 68, 0.1) 0%, transparent 50%)",
-          ],
-        }}
-        transition={{ duration: 4, repeat: Infinity }}
-      />
+    <section className="bg-black py-20 md:py-32">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-14 lg:gap-24 items-center">
 
-      {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto">
-        {/* Header */}
-        <motion.div
-          className="text-center mb-20 space-y-4"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white">
-            Patah Pulih
-          </h2>
-          <p className="text-gray-300 text-lg md:text-xl max-w-3xl mx-auto">
-            Konten creation dari Adab Productions yang membawa cerita visual ke
-            level berikutnya
-          </p>
-        </motion.div>
+          {/* ── Teks kiri ── */}
+          <div className="lg:col-span-2 flex flex-col gap-6">
 
-        {/* 3D Gallery Container */}
-        {reelsData.length > 0 && (
-        <motion.div
-          className="relative h-[500px] flex items-center justify-center"
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-          style={{
-            perspective: "1200px",
-          }}
-        >
-          {/* Large Left Card */}
-          <motion.div
-            className="absolute -left-20 w-[320px] h-[420px] hidden lg:block"
-            animate={{
-              opacity: [0.3, 0.5, 0.3],
-              rotateY: [25, 30, 25],
-            }}
-            transition={{
-              duration: 4,
-              repeat: Infinity,
-            }}
-          >
-            <div className="w-full h-full rounded-3xl border border-white/10 overflow-hidden bg-white/5 shadow-2xl shadow-black/40" />
-          </motion.div>
+            {/* Label */}
+            <div className="flex items-center gap-3">
+              <span className="w-5 h-px bg-red-500 shrink-0" />
+              <span className="text-[11px] uppercase tracking-[0.4em] text-red-400 font-medium">
+                Bagian dari ADAB Productions
+              </span>
+            </div>
 
-          {/* Center Gallery Cards */}
-          <motion.div
-            className="relative h-full w-[900px] max-w-full"
-            style={{
-              transformStyle: "preserve-3d",
-            }}
-          >
-            {reelsData.map((item, index) => (
-              <GalleryCard
-                key={item.id}
-                item={item}
-                isActive={index === activeIndex}
-                position={getPosition(index)}
-                onClick={() => handleCardClick(index)}
-              />
-            ))}
-          </motion.div>
+            {/* Judul + deskripsi */}
+            <div className="space-y-4">
+              <h2 className="text-3xl md:text-4xl font-bold text-white leading-snug">
+                Patah Pulih
+              </h2>
+              <p className="text-gray-400 text-sm md:text-[15px] leading-relaxed max-w-[340px]">
+                Sayap konten dari ADAB Productions yang bergerak di dunia
+                Gen-Z. Kami percaya setiap cerita anak muda — sekecil apa
+                pun — layak untuk hidup di layar.
+              </p>
+            </div>
 
-          {/* Large Right Card */}
-          <motion.div
-            className="absolute -right-20 w-[320px] h-[420px] hidden lg:block"
-            animate={{
-              opacity: [0.3, 0.5, 0.3],
-              rotateY: [-25, -30, -25],
-            }}
-            transition={{
-              duration: 4,
-              repeat: Infinity,
-            }}
-          >
-            <div className="w-full h-full rounded-3xl border border-white/10 overflow-hidden bg-white/5 shadow-2xl shadow-black/40" />
-          </motion.div>
-        </motion.div>
+            {/* Divider tipis */}
+            <span className="w-12 h-px bg-white/10" />
 
-        {/* Navigation Dots */}
-        <motion.div
-          className="flex gap-3 justify-center mt-12"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          viewport={{ once: true }}
-        >
-          {reelsData.map((_, index) => (
-            <motion.button
-              key={index}
-              onClick={() => setActiveIndex(index)}
-              className={`w-2 h-2 rounded-full transition-all ${
-                index === activeIndex ? "bg-red-500 w-8" : "bg-white/30"
+            {/* Navigasi */}
+            <div className="flex items-center gap-4">
+              <button
+                onClick={prev}
+                aria-label="Sebelumnya"
+                className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:text-white hover:border-white/50 hover:bg-white/5 transition-all duration-200"
+              >
+                <ChevronLeft className="w-4 h-4" />
+              </button>
+
+              <span className="text-white/30 text-xs tabular-nums tracking-widest">
+                {String(current + 1).padStart(2, "0")}
+                &thinsp;/&thinsp;
+                {String(reelsData.length).padStart(2, "0")}
+              </span>
+
+              <button
+                onClick={next}
+                aria-label="Berikutnya"
+                className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:text-white hover:border-white/50 hover:bg-white/5 transition-all duration-200"
+              >
+                <ChevronRight className="w-4 h-4" />
+              </button>
+            </div>
+
+            {/* Dots */}
+            <div className="flex gap-2 items-center">
+              {reelsData.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => navigate(i)}
+                  aria-label={`Slide ${i + 1}`}
+                  className={`h-[3px] rounded-full transition-all duration-300 ${
+                    i === current
+                      ? "w-6 bg-red-500"
+                      : "w-2 bg-white/20 hover:bg-white/40"
+                  }`}
+                />
+              ))}
+            </div>
+
+            {/* Link Instagram */}
+            <a
+              href="https://www.instagram.com/patah_pulih/"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 text-xs text-white/35 hover:text-white/70 transition-colors w-fit"
+            >
+              <Instagram className="w-3.5 h-3.5" />
+              <span>@patah_pulih</span>
+            </a>
+          </div>
+
+          {/* ── Kartu kanan ── */}
+          <div className="lg:col-span-3 flex justify-center lg:justify-end">
+            <div
+              className={`relative w-full max-w-[460px] aspect-[3/4] rounded-2xl overflow-hidden transition-opacity duration-[180ms] ${
+                fading ? "opacity-0" : "opacity-100"
               }`}
-              whileHover={{ scale: 1.2 }}
-              whileTap={{ scale: 0.9 }}
-            />
-          ))}
-        </motion.div>
+            >
+              <Image
+                src={item.image}
+                alt={item.title}
+                fill
+                className="object-cover"
+                priority
+                onError={(e) => {
+                  e.currentTarget.src = "/FrontCover.png";
+                  e.currentTarget.onerror = null;
+                }}
+              />
 
-        {/* CTA Text */}
-        <motion.p
-          className="text-center text-gray-400 text-sm mt-8"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          viewport={{ once: true }}
-        >
-          Klik card untuk melihat reel di Instagram • Otomatis berganti setiap 3 detik
-        </motion.p>
-        )}
+              {/* Overlay gradient */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/10 to-transparent" />
+
+              {/* Caption */}
+              <div className="absolute bottom-0 left-0 right-0 p-6">
+                <a
+                  href={item.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="group block"
+                >
+                  <p className="text-white text-sm font-medium leading-snug group-hover:text-white/80 transition-colors">
+                    {item.title}
+                  </p>
+                  <p className="text-white/40 text-xs mt-1.5 group-hover:text-white/60 transition-colors">
+                    Lihat di Instagram →
+                  </p>
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
       </div>
     </section>
   );
