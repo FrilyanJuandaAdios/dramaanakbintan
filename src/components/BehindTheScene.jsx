@@ -4,11 +4,11 @@ import Image from "next/image";
 import { useRef } from "react";
 
 const photos = [
-  { src: "/BS1.jpg", alt: "Behind 1" },
-  { src: "/BS2.jpg", alt: "Behind 2" },
-  { src: "/BS3.jpg", alt: "Behind 3" },
-  { src: "/BS4.jpg", alt: "Behind 4" },
-  { src: "/BS5.jpg", alt: "Behind 5" },
+  { src: "/BS1.JPG", alt: "Behind 1" },
+  { src: "/BS2.JPG", alt: "Behind 2" },
+  { src: "/BS3.JPG", alt: "Behind 3" },
+  { src: "/BS4.JPG", alt: "Behind 4" },
+  { src: "/BS5.JPG", alt: "Behind 5" },
   { src: "/BS6.jpg", alt: "Behind 6" },
 ];
 

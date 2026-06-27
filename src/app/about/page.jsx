@@ -49,7 +49,7 @@ export default function AboutPage() {
           {/* Image side */}
           <div className="relative w-full h-[400px] rounded-2xl overflow-hidden">
             <Image
-              src="/BS4.jpg"
+              src="/BS4.JPG"
               alt="Our Story"
               fill
               className="object-cover grayscale"
