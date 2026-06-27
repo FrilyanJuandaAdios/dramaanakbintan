@@ -12,6 +12,7 @@ import { useState } from "react";
 import HeroSectionPhoto from "@/components/HeroSectionPhoto";
 import ComingSoonAndLatest from "@/components/ComingSoonAndLatest";
 import BintanSection from "@/components/BintanSection";
+import HeroGallery from "@/components/hero-gallery/HeroGallery";
 
 export default function Home() {
   const [selectedFilm, setSelectedFilm] = useState(null);
@@ -28,6 +29,7 @@ export default function Home() {
         )}
       </>
       <ComingSoonAndLatest />
+      <HeroGallery />
       <BintanSection />
       <Footer />
     </main>

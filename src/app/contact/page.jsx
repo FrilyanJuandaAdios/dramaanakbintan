@@ -9,6 +9,8 @@ const programs = [
   "Komunitas Kreatif",
 ];
 
+const API_URL = "/api/contact";
+
 export default function ContactPage() {
   const [form, setForm] = useState({
     name: "",
@@ -16,18 +18,67 @@ export default function ContactPage() {
     whatsapp: "",
     program: "",
   });
-  const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
+  const [toastMessage, setToastMessage] = useState("");
+  const [toastType, setToastType] = useState("success");
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (form.name && form.address && form.whatsapp && form.program) {
-      setSubmitted(true);
-      // 👉 di sini nanti bisa ditambah API POST ke backend/Google Sheets/Email
-      console.log("Form submitted:", form);
+    setSubmitError("");
+    setToastMessage("");
+
+    if (!form.name || !form.address || !form.whatsapp || !form.program) {
+      setSubmitError("Semua field wajib diisi.");
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch(API_URL, {
+        method: "POST",
+        cache: "no-cache",
+        body: new URLSearchParams(form),
+      });
+
+      if (!response.ok) {
+        const json = await response.json().catch(() => null);
+        const errorText = json?.error || "Gagal mengirim data.";
+        console.error("API response error:", response.status, errorText);
+        throw new Error(errorText);
+      }
+
+      const json = await response.json().catch(() => null);
+      if (!json?.success) {
+        const errorText = json?.error || "Gagal mengirim data.";
+        throw new Error(errorText);
+      }
+
+      setForm({ name: "", address: "", whatsapp: "", program: "" });
+      setToastType("success");
+      setToastMessage("Terima kasih! Data Anda berhasil dikirim.");
+
+      setTimeout(() => {
+        setToastMessage("");
+      }, 4000);
+    } catch (error) {
+      console.error("Error sending contact form:", error);
+      setSubmitError(
+        "Maaf, terjadi masalah saat mengirim data. Silakan coba lagi nanti."
+      );
+      setToastType("error");
+      setToastMessage("Gagal mengirim data. Coba lagi nanti.");
+
+      setTimeout(() => {
+        setToastMessage("");
+      }, 4000);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -57,8 +108,7 @@ export default function ContactPage() {
           transition={{ duration: 0.6 }}
           className="w-full max-w-2xl p-8 rounded-2xl bg-white/10 border border-white/20 backdrop-blur-xl shadow-xl space-y-6"
         >
-          {!submitted ? (
-            <>
+          <>
               {/* Nama */}
               <div>
                 <label className="block text-sm font-semibold mb-2">
@@ -128,32 +178,35 @@ export default function ContactPage() {
                 </select>
               </div>
 
+              {submitError && (
+                <div className="rounded-xl bg-red-500/10 border border-red-500 text-red-100 px-4 py-3 mb-4">
+                  {submitError}
+                </div>
+              )}
+
               {/* Tombol */}
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 type="submit"
-                className="w-full py-3 rounded-xl bg-red-600 hover:bg-red-700 transition font-semibold"
+                disabled={isSubmitting}
+                className="w-full py-3 rounded-xl bg-red-600 hover:bg-red-700 transition font-semibold disabled:cursor-not-allowed disabled:bg-red-400"
               >
-                Kirim
+                {isSubmitting ? "Mengirim..." : "Kirim"}
               </motion.button>
             </>
-          ) : (
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              className="text-center space-y-4"
-            >
-              <h2 className="text-2xl font-bold text-green-400">
-                Terima kasih!
-              </h2>
-              <p className="text-gray-300">
-                Data anda sudah terkirim. Kami akan segera menghubungi anda
-                lewat WhatsApp.
-              </p>
-            </motion.div>
-          )}
         </motion.form>
+        {toastMessage && (
+          <div
+            className={`fixed left-1/2 bottom-8 z-50 -translate-x-1/2 rounded-2xl px-6 py-4 text-sm font-medium shadow-xl transition-all duration-300 ${
+              toastType === "success"
+                ? "bg-emerald-500 text-white"
+                : "bg-red-500 text-white"
+            }`}
+          >
+            {toastMessage}
+          </div>
+        )}
       </section>
     </main>
   );
