@@ -51,6 +51,28 @@ const programs = [
   },
   {
     number: "03",
+    Icon: Users,
+    title: "Casting Film Layla",
+    tagline: "Buka peluang untuk ikut serta dalam proyek film kami",
+    desc: "Casting Film Layla adalah kesempatan bagi siapa pun yang ingin ikut serta dalam proses pembuatan film kami. Kami membuka ruang untuk para calon pemeran yang ingin belajar, berproses, dan merasakan langsung atmosfer syuting dengan tim Drama Anak Bintan. Kami mencari orang-orang yang siap untuk hadir, berani mencoba, dan mau tumbuh bersama dalam proyek ini.",
+    activities: [
+      "Seleksi casting dan sesi pengenalan karakter",
+      "Latihan akting dasar sambil memahami nuansa peran",
+      "Kehadiran di proses syuting film Layla",
+      "Keterlibatan dalam kerja tim produksi yang profesional tapi santai",
+    ],
+    benefits: [
+      "Pengalaman langsung ikut casting film independen",
+      "Belajar akting dan cara kerja set produksi",
+      "Kesempatan tampil dalam proyek film yang sedang dibuat",
+      "Ikut membangun jejak awal di dunia perfilman lokal",
+    ],
+    audience: "Siapapun yang tertarik mencoba peran di film, baik pemula maupun yang ingin menambah pengalaman di set produksi.",
+    chips: ["Casting", "Film Layla", "Open Call"],
+    featured: true,
+  },
+  {
+    number: "04",
     Icon: Clapperboard,
     title: "Ikut Produksi Film",
     tagline: "Terlibat langsung dalam proses pembuatan film kami",
@@ -69,7 +91,7 @@ const programs = [
     ],
     audience: "Siapapun yang serius mau belajar dan tidak takut tangan kotor. Tidak harus punya pengalaman.",
     chips: ["Hands-on", "Credit Film", "Patah Pulih"],
-    featured: true,
+    featured: false,
   },
 ];
 

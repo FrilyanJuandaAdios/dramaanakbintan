@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 const programs = [
   "Workshop Film",
   "Screening",
+  "Casting Film Layla",
   "Ikut Produksi Film",
   "Lainnya",
 ];
