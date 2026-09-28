@@ -38,7 +38,7 @@ export default function Footer() {
         {/* Logo */}
         <div className="flex items-end">
           <Image
-            src="/ADABLogoNew.png"
+            src="/LogoADAB-White.png"
             alt="Drama Anak Bintan"
             width={320}
             height={320}

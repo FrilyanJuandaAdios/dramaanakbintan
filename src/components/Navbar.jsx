@@ -43,7 +43,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="/" className="shrink-0">
             <Image
-              src="/ADABLogoNew.png"
+              src="/LogoADAB-White.png"
               alt="Drama Anak Bintan"
               width={scrolled ? 84 : 108}
               height={40}

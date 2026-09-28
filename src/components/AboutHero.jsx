@@ -69,7 +69,7 @@ export default function StoryScroll() {
           className="absolute text-center z-10"
         >
           <Image
-            src="/ADABLogoNew.png"
+            src="/LogoADAB-White.png"
             alt="ADAB Logo"
             width={400}
             height={150}
