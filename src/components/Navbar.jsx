@@ -9,6 +9,7 @@ const menus = [
   { name: "Home", path: "/" },
   { name: "About Us", path: "/about" },
   { name: "Projects", path: "/projectpage" },
+  { name: "Layla", path: "/layla" },
   { name: "Programs", path: "/programpage" },
 ];
 

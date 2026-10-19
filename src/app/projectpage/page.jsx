@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import Footer from "@/components/Footer";
+import { hook as laylaHook } from "@/data/layla";
 
 const completedFilms = [
   { title: "Kasut Untuk Mak Ngah", premise: "Sebuah kisah tentang perjalanan budaya yang penuh makna.", poster: "/thumbnails/1.png" },
@@ -27,9 +28,10 @@ const onGoing = [
     number: "02",
     title: "Layla",
     teaser: "Satu nama yang membawa seribu cerita. Tentang cinta, kehilangan, dan hal-hal yang tidak pernah sempat terucap.",
-    genre: "Drama · Romansa",
+    genre: "Drama · Thriller",
     status: "Pra Produksi",
     percent: 20,
+    href: "/layla",
   },
   {
     number: "03",
@@ -93,41 +95,79 @@ export default function ProjectsPage() {
         <div className="absolute bottom-1/3 right-1/4 w-[400px] h-[400px] bg-red-900 rounded-full mix-blend-screen filter blur-[100px] opacity-10" />
       </div>
 
-      {/* ── HERO ── */}
-      <section className="relative h-screen flex flex-col items-center justify-center text-center px-6 z-10">
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-xs uppercase tracking-[0.4em] text-red-500 mb-6 font-semibold"
-        >
-          Drama Anak Bintan
-        </motion.p>
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.1 }}
-          className="text-6xl md:text-8xl font-bold mb-6 leading-tight"
-        >
-          Karya <span className="text-red-500">Kami</span>
-        </motion.h1>
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.2 }}
-          className="text-lg md:text-xl text-gray-400 max-w-2xl leading-relaxed"
-        >
-          Setiap film lahir dari satu pertanyaan sederhana — cerita apa yang
-          harus dunia dengar hari ini?
-        </motion.p>
+      {/* ── HERO: OUR PROJECT NOW ── */}
+      <section className="relative z-10 h-[100svh] min-h-[620px] overflow-hidden">
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.5 }}
-          className="mt-12 flex flex-col items-center gap-1"
+          initial={{ opacity: 0, scale: 1.06 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 2.4, ease: "easeOut" }}
+          className="absolute inset-0"
         >
-          <span className="text-xs text-gray-600 uppercase tracking-widest">Scroll</span>
-          <div className="w-px h-12 bg-gradient-to-b from-gray-600 to-transparent" />
+          <Image src="/Layla/Layla.png" alt="" fill priority sizes="100vw" className="object-cover object-[70%_30%]" />
+        </motion.div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-black/50" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/30 to-transparent" />
+
+        <div className="relative h-full mx-auto max-w-6xl px-6 pb-16 md:pb-20 flex flex-col justify-end">
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="text-xs uppercase tracking-[0.3em] text-red-500 mb-8 font-semibold"
+          >
+            Our Project Now
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.6 }}
+          >
+            <h1 className="sr-only">Layla — Dosa dan Luka</h1>
+            <Image
+              src="/Layla/LaylaLogo.png"
+              alt=""
+              width={1052}
+              height={372}
+              priority
+              className="w-[80vw] max-w-[460px] h-auto"
+            />
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.9 }}
+          >
+            <p className="mt-8 max-w-xl text-base md:text-lg text-gray-300 leading-relaxed">{laylaHook}</p>
+            <p className="mt-4 text-sm text-gray-500">Drama · Thriller &nbsp;/&nbsp; Film Pendek &nbsp;/&nbsp; Pra Produksi</p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link
+                href="/layla"
+                className="inline-flex items-center gap-2 rounded-full bg-red-500 hover:bg-red-600 text-white px-7 py-3 text-sm font-bold transition"
+              >
+                Lihat Proyek
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+              <Link
+                href="/layla#sponsorship"
+                className="inline-flex items-center gap-2 rounded-full border border-white/25 hover:border-white/60 text-white px-7 py-3 text-sm font-semibold transition"
+              >
+                Peluang Sponsorship
+              </Link>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ── INTRO ── */}
+      <section className="relative z-10 px-6 pt-32 pb-24 max-w-6xl mx-auto">
+        <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }}>
+          <p className="text-xs uppercase tracking-[0.4em] text-red-500 mb-6 font-semibold">Drama Anak Bintan</p>
+          <h2 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+            Karya <span className="text-red-500">Kami</span>
+          </h2>
+          <p className="text-lg md:text-xl text-gray-400 max-w-2xl leading-relaxed">
+            Setiap film lahir dari satu pertanyaan sederhana — cerita apa yang harus dunia dengar hari ini?
+          </p>
         </motion.div>
       </section>
 
@@ -218,6 +258,15 @@ export default function ProjectsPage() {
                     <h3 className="text-2xl md:text-3xl font-bold text-white">{film.title}</h3>
                   </div>
                   <p className="text-gray-400 leading-relaxed md:text-lg max-w-2xl">{film.teaser}</p>
+                  {film.href && (
+                    <Link
+                      href={film.href}
+                      className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-red-400 hover:text-red-300 transition"
+                    >
+                      Lihat Proyek
+                      <ArrowRight className="h-4 w-4" />
+                    </Link>
+                  )}
                 </div>
               </div>
 

@@ -1,5 +1,23 @@
 const films = [
   {
+    title: "Menata Kala",
+    premis:
+      "Ketika ingatan perlahan menghapus wajah yang pernah paling akrab, seorang suami memilih tetap tinggal. Bukan untuk memaksa kenangan kembali, melainkan untuk menciptakan alasan baru agar cinta bisa lahir sekali lagi.",
+    poster: "/thumbnails/latest/menata-kala.jpg",
+    background: "/thumbnails/latest/menata-kala.jpg",
+    videoId: "x90CVLVj1rw",
+    youtubeUrl: "https://www.youtube.com/watch?v=x90CVLVj1rw",
+  },
+  {
+    title: "Hari Raya Tanpa Emak",
+    premis:
+      "Dua hari menjelang Lebaran, Amira harus menghadapi hari raya pertamanya tanpa sang ibu. Di tengah kerinduan yang tak terucap, sang ayah diam-diam berjuang sepanjang malam demi menyelesaikan satu hal kecil yang sangat berarti bagi putrinya.",
+    poster: "/thumbnails/latest/hari-raya-tanpa-emak.jpg",
+    background: "/thumbnails/latest/hari-raya-tanpa-emak.jpg",
+    videoId: "WLUv0ypDfvo",
+    youtubeUrl: "https://www.youtube.com/watch?v=WLUv0ypDfvo",
+  },
+  {
     title: "Kasut Untuk Mak Ngah",
     premis:
       "Apa yang terjadi jika kasih sayang yang tulus tidak pernah mendapat balasan? 'Kasut untuk Mak Ngah' mengisahkan perjuangan seorang anak yatim piatu yang berusaha keras membahagiakan rumah barunya meskipun harapan tampak jauh. Akankah ketulusan ini akhirnya menyentuh hati mereka? Temukan jawabannya dalam short movie ini.",
@@ -68,6 +86,55 @@ const films = [
     videoId: "-q_wSLbXhIE",
     rating: "8.8",
     youtubeUrl: "https://www.youtube.com/watch?v=-q_wSLbXhIE",
+  },
+];
+
+// Rilisan terbaru, tampil sebagai poster di beranda.
+// `focus` = posisi horizontal crop thumbnail 16:9 ke poster 2:3 (menghindari teks bawaan thumbnail)
+// `zoom` (opsional) = perbesar dari bawah untuk memotong logo bawaan di bagian atas thumbnail
+export const latestFilms = [
+  {
+    videoId: "x90CVLVj1rw",
+    genre: "Drama · Romansa",
+    tagline: "Sebab mencintai, kadang berarti memperkenalkan diri kepada orang yang sama, setiap hari.",
+    focus: "95% center",
+    zoom: 1.28,
+  },
+  {
+    videoId: "WLUv0ypDfvo",
+    genre: "Drama · Keluarga",
+    tagline: "Hari Raya bukan selalu tentang apa yang kita miliki.",
+    focus: "70% center",
+    zoom: 1.25,
+  },
+  {
+    videoId: "-q_wSLbXhIE",
+    title: "Ketika Kita Tak Lagi Sendiri",
+    poster: "/thumbnails/latest/ketika-kita-tak-lagi-sendiri.jpg",
+    genre: "Drama · Keluarga",
+    tagline: "Karena pada akhirnya, kita tidak pernah benar-benar sendiri.",
+    focus: "52% center",
+  },
+].map((extra) => ({ ...films.find((f) => f.videoId === extra.videoId), ...extra }));
+
+export const upcomingFilms = [
+  {
+    title: "Layla",
+    subtitle: "Dosa dan Luka",
+    href: "/layla",
+    status: "Pra Produksi",
+    release: "2027",
+    genre: "Drama · Thriller",
+    premis:
+      "Ketika seseorang yang dicintai pergi tanpa sempat menceritakan lukanya, seberapa jauh kita akan mencari kebenaran yang ia tinggalkan?",
+  },
+  {
+    title: "Seuntai Rindu di Ujung Waktu",
+    status: "Pra Produksi",
+    release: "Segera",
+    genre: "Drama",
+    premis:
+      "Ketika detik terakhir tiba, yang tersisa bukan kenangan — melainkan rindu yang tidak tahu ke mana harus pergi.",
   },
 ];
 
